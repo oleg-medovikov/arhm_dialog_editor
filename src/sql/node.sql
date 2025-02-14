@@ -1,10 +1,11 @@
-CREATE TABLE IF NOT EXISTS event_steps (
+CREATE TABLE IF NOT EXISTS node (
     id VARCHAR(25) PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    code VARCHAR(255) NOT NULL,
+    class VARCHAR(20) NULL,
     text TEXT NOT NULL,
-    image VARCHAR(255) NULL,
+    loc VARCHAR(50),
     date_create TIMESTAMPTZ,
     date_update TIMESTAMPTZ,
+    active BOOLEAN,
+    dialog_id VARCHAR(25) REFERENCES dialog(id),
     user_id VARCHAR(25) REFERENCES users(id)
 );

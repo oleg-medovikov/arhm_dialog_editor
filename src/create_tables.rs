@@ -4,17 +4,11 @@ use std::path::Path;
 
 pub async fn create_tables(pool: &PgPool) -> Result<(), sqlx::Error> {
     let sql_files = vec![
-        "users_table.sql",
-        "users_log_text_table.sql",
-        "users_log_table.sql",
-//        "locations_table.sql",
-//        "events_table.sql",
-//        "event_cache_table.sql",
-//        "event_steps_table.sql",
-//        "event_x_steps_table.sql",
-//        "event_links_table.sql",
-//        "event_options_table.sql",
-//        "event_links_x_options_table.sql",
+        "users.sql",
+        "users_log.sql",
+        "users_log_text.sql",
+        "dialog.sql",
+        "node.sql",
     ];
 
     for file_name in sql_files {

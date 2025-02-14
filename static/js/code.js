@@ -125,9 +125,8 @@ graph.linkTemplate = $(go.Link, {
         margin: 4,
         editable: true,
         text: 'привет',
-      }))
+      }).bindTwoWay("text"))
        .set({ segmentOffset: new go.Point(0, -15) })
-      .bindTwoWay("text")
   );
 
 function save() {
