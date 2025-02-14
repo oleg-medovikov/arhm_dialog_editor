@@ -1,66 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-<link rel="stylesheet" href="/editor_main.css">
-    <title>
-      Arhm dialod editor
-    </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagram</title>
   </head>
-
+  <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+    main {
+      padding: 16px;
+      width: 1400px;
+      height: 100vh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    #graph {
+      flex-grow: 3;
+      background-color: #eee;
+    }
+    #json {
+      width: 100%;
+      flex-grow: 1;
+    }
+  </style>
   <body>
-    <div class="flex flex-col prose">
-      <div class="w-full max-w-screen-xl mx-auto">
-        <!-- * * * * * * * * * * * * * -->
-        <!-- Start of GoJS sample code -->
-
-        <div id="allSampleContent" class="p-4 w-full">
-
-<div id="sample">
-  <div id="myDiagramDiv" style="border: solid 1px black; width: 100%; height: 470px; background: whitesmoke"></div>
-  <div>
-    <div>
-      <button id="SaveButton" onclick="save()">Save</button>
-      <button onclick="load()">Load</button>
-      Diagram Model saved in JSON format:
-    </div>
-    <textarea id="mySavedModel" style="width: 100%; height: 300px">
-{ "class": "GraphLinksModel",
-  "nodeKeyProperty": "id",
-  "pointsDigits": 0,
-  "nodeDataArray": [
-{"id":-1,"loc":"84.20547342962314 -182.14706062767382","type":"Start","text":"Start"},
-{"id":-2,"loc":"1187.6134517819885 32.2927533719238","type":"End","text":"End"},
-{"text":"Радостный продавец\nприятной наружности\nторгует новомодной едой.\nЗамечая Ваш интерес,\nон предлагает вам выбрать\nодну из своих колбас. ","id":-3,"loc":"-2.2773894617418904 -25.84534382237611"},
-{"text":"Продавец ловко хватает\nсосиску щипцами,\nкладет в булку.\nА какой соус предпочитаете?","id":-4,"loc":"393.49142753777863 4.757191849600908"},
-{"text":"Продавец сожалеет,\nно говяжие сосиски\nуже закончились,\nпридется выбирать\nиз острой и не очень\nсвинины.","id":-5,"loc":"415.8268713144065 -232.82351399061923"},
-{"text":"Продавец тихо рассмеялся\nи пообещал расширить\nсвой ассортимент \nв ближайшем будущем.","id":-6,"loc":"233.32149470009745 204.15351739661628"},
-{"text":"Продавец бахает горцицы,\nщедро, не жалет.\n\"Горчица не очень у меня...\nНо я положу Вам две сосиски!\"\nГотовы заплатить два доллара?","id":-7,"loc":"747.40201060864 -13.223486196463085"},
-{"text":"Продавец аккуратно мажет\nкрасным соусом.\nГотовы заплатить доллар?","id":-8,"loc":"754.5892433150495 174.866456111061"},
-{"text":"Продавец впервые за день\nрезко изменился в лице:\n\"А я не продаю еду собакам!\"","id":-9,"loc":"773.3227721299331 -166.66808528419736"}
-],
-  "linkDataArray": [
-{"from":-1,"to":-3,"points":[110,-114,105,-89,94,-69,94,-26],"text":""},
-{"from":-3,"to":-4,"points":[191,47,240,52,315,68,394,61],"text":"свиная острая"},
-{"from":-3,"to":-4,"points":[187,-25,230,-55,459,-53,481,5],"text":"свиная сосиска"},
-{"from":-3,"to":-5,"points":[137,-26,181,-92,286,-184,416,-175],"text":"говяжая"},
-{"from":-3,"to":-6,"points":[104,100,110,139,30,217,233,240],"text":"разве их делают не из собак?"},
-{"from":-5,"to":-4,"points":[543,-107,577,-65,542,-8,532,5],"text":"свиная сосиска"},
-{"from":-4,"to":-7,"points":[600,23,649,10,697,9,747,18],"text":"горчица"},
-{"from":-4,"to":-8,"points":[599,94,715,143,645,198,754,205],"text":"кетчуп"},
-{"from":-5,"to":-9,"points":[567,-189,630,-204,689,-200,780,-166],"text":"но я не ем свинину!"},
-{"from":-7,"to":-2,"points":[970,30,1041,23,1109,26,1189,53],"text":"отказаться"},
-{"from":-8,"to":-2,"points":[951,192,1055,171,1111,168,1196,84],"text":"отказаться"},
-{"from":-9,"to":-2,"points":[983,-95,1091,-60,1150,-23,1199,39],"text":"уйти"},
-{"from":-6,"to":-4,"points":[424,238,506,227,519,159,506,97],"text":"свиная сосиска"}
-]}
-    </textarea>
-  </div>
-</div>
-
+    <main>
+      <div id="graph"></div>
+      <div>
+        <button type="button" id="save">save</button><button type="button" id="load">load</button>
+      </div>
+      <textarea id="json"></textarea>
+    </main>
   </body>
-  <script src="/loginCheck.js"></script>
-  <script src="/contentLoad.js"></script>
-  <script id="code" src="/code.js"></script>
-  <script src="/go.js"></script>
+  <!-- импортируем скрипт как модуль -->
+  <script src="/go.js" type="module"></script>
+  <script src="/idFetcher.js" type="module"></script>
+  <script src="/code.js" type="module"></script>
 </html>

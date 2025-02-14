@@ -7,6 +7,7 @@ mod models;
 mod system;
 mod create_tables;
 mod web;
+mod node;
 
 
 #[rocket::launch]
@@ -20,5 +21,6 @@ async fn rocket() -> _ {
     rocket::build()
         .mount("/", web::web_routes())
         .mount("/api", user::user_routes())
+        .mount("/api", node::node_routes())
         .manage(pool)
 }

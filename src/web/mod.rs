@@ -2,6 +2,7 @@ use rocket::routes;
 
 mod editor;
 mod login;
+mod id_fetcher;
 
 pub fn web_routes() -> Vec<rocket::Route> {
     routes![
@@ -14,5 +15,6 @@ pub fn web_routes() -> Vec<rocket::Route> {
         editor::go_js,
         editor::code_js,
         editor::content_load_js,
+        id_fetcher::id_fetcher_js,
     ]
 }
