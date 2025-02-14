@@ -1,22 +1,22 @@
-import { idFetcher } from "/idFetcher.js";
+   import { idFetcher } from "/idFetcher.js";
 
-const $ = go.GraphObject.make;
+   const $ = go.GraphObject.make;
 
-const UI = {
-  graph: document.getElementById("graph"),
-  save: document.getElementById("save"),
-  load: document.getElementById("load"),
-  json: document.getElementById("json"),
-};
+   const UI = {
+     graph: document.getElementById("graph"),
+     save: document.getElementById("save"),
+     load: document.getElementById("load"),
+     json: document.getElementById("json"),
+   };
 
-const graph = new go.Diagram(UI.graph, {
-  "toolManager.mouseWheelBehavior": go.WheelMode.Zoom,
-  "clickCreatingTool.archetypeNodeData": { text: "текст" },
+   const graph = new go.Diagram(UI.graph, {
+     "toolManager.mouseWheelBehavior": go.WheelMode.Zoom,
+     "clickCreatingTool.archetypeNodeData": { text: "текст" },
   "undoManager.isEnabled": true,
 });
 
 // Функция генерации id должна синхронно возвращать строку или число.
-graph.model.makeUniqueKeyFunction = idFetcher.next;
+graph.model.makeUniqueKeyFunction = () => idFetcher.next();
 // Задаём название поля айдишника, по умолчанию это "key"
 graph.model.nodeKeyProperty = "id";
 
@@ -77,7 +77,7 @@ function onAddClick(e, obj) {
   const linkData = {
     from: graph.model.getKeyForNodeData(fromData),
     to: graph.model.getKeyForNodeData(toData),
-    text: "линк",
+    text: "привет",
   };
   graph.model.addLinkData(linkData);
   graph.commitTransaction("Add State");
@@ -124,8 +124,10 @@ graph.linkTemplate = $(go.Link, {
       $(go.TextBlock, {
         margin: 4,
         editable: true,
-      }).bindTwoWay("text")
-    )
+        text: 'привет',
+      }))
+       .set({ segmentOffset: new go.Point(0, -15) })
+      .bindTwoWay("text")
   );
 
 function save() {
